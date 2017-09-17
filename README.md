@@ -12,7 +12,8 @@ A tool coded in Python that allows the user to generate accounts for Adidas US o
 - `termcolor`
 
 ## Installation and Usage
-- You need to add this line to your hosts file (google how to do this if you do not know): `127.0.0.1 fuckrsvpkingz.adidas.co.uk`
+- You need to add the below line to your hosts file (google how to do this if you do not know)
+- `127.0.0.1 fuckrsvpkingz.adidas.co.uk`
 - Make sure you have installed all of the modules listed above, using `pip install` (or `pip3 install` if you have python2 too) to do so
 - Edit `config.json` with a suitable editor e.g. sublime or atom (NOT NOTEPAD)
 - `cd` into the directory location
