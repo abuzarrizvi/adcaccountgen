@@ -14,7 +14,7 @@ from utils import n_logging, c_logging
 
 
 tokens = []
-
+emails = []
 def captureToken(token):
 	expiry = datetime.now().timestamp() + 115
 	tokenDict = {
@@ -102,7 +102,7 @@ class Generator():
 		captcha_token = self.__get_captcha_token(captcha_id)
 		return captcha_token
 
-	def create_account(self, email, password, captcha_token):		
+	def create_account(self, email, password, captcha_token):
 		headers = {
 			'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36',
 			'Accept-Encoding': 'gzip, deflate, sdch, br',
@@ -149,25 +149,42 @@ class Generator():
 			return False, None
 
 
+def generateemails(username, domain):
+	email = ""
+	username_length = len(username)
+	combinations = pow(2, username_length - 1)
+	padding = "{0:0" + str(username_length - 1) + "b}"
+	for i in range(0, combinations):
+		bin = padding.format(i)
+		full_email = ""
+
+		for j in range(0, username_length - 1):
+		    full_email += (username[j]);
+		    if bin[j] == "1":
+		        full_email += "."
+		full_email += (username[j + 1])
+		email = full_email + domain
+		emails.append(email)
+
+
 
 if __name__ == '__main__':
-	with open('config.json') as file:
-		config = json.load(file)
-		file.close()
 	_thread.start_new_thread(app.run, ())
 	_thread.start_new_thread(manageTokens, ())
 	accountsList = []
-	n_logging("Adidas Account Creator v1.0.0")
-	n_logging("@TheRealChefUK")
+	n_logging("Adidas Account Creator v1.0.1")
+	n_logging("@thesolecop")
 	n_logging("***************************************************************************")
-	creator = Generator(config['locale'], '6LdyFRkUAAAAAF2YmQ9baZ6ytpVnbVSAymVpTXKi', 'https://www.adidas.com')
-	num = input("# ACCOUNTS: ")
+	creator = Generator("US", '6LdyFRkUAAAAAF2YmQ9baZ6ytpVnbVSAymVpTXKi', 'https://www.adidas.com')
+	email = input("ENTER EMAIL: ")
+	username = email.split('@')[0]
+	domain = '@' + email.split('@')[1]
+	generateemails(username, domain)
 	webbrowser.open('http://fuckrsvpkingz.adidas.co.uk:5000/solve')
 	n_logging("Started account generator.")
-	for x in range(int(num)):
-		email = '{}-{}@{}'.format(config['prefix'], randint(1111,999999999), config['domain'])
-		allchar = string.ascii_letters + string.digits
-		passw = "".join(choice(allchar) for x in range(randint(8, 12)))
+	for x in range(len(emails)):
+		email = emails[x]
+		passw = 'iamgay99'
 		n_logging("Task {} - Waiting for captcha token.".format(x))
 		# token = creator.fetch_token()
 		token = sendToken()
