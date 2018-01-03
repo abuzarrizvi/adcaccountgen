@@ -1,7 +1,7 @@
 # Adidas Account Generator
 
 ## Description
-A tool coded in Python that allows the user to generate accounts for Adidas US or Adidas UK using a catch-all domain (support for gmail tricks coming soon!). The tool supports the recent captcha requirement change by Adidas.  Accounts are created in the format `PREFIX-RANDOMNUMBER@DOMAIN` with a random password. The prefix and domain can be edited in `config.json`.
+Python account generator for adidas.com. Uses gmail "." trick to make 2^(n-1) accounts per gmail address. Solved captchas manually. 
 
 ## Requirements
 - Python 3+
@@ -25,11 +25,11 @@ A tool coded in Python that allows the user to generate accounts for Adidas US o
 - [X] Catch-all domain support
 - [X] Random password generation
 - [ ] 2captcha support
-- [ ] Gmail tricks support
+- [X] Gmail tricks support
 - [ ] Multi-threading
 - [ ] Custom password usage
+- [ ] No captcha site. (might make private)
+
 
 ## Notes
-- I will push the full version in the next few days, the current version contains some of the code for 2captcha but does not function as it should (some accounts don't actually create) so edit the code at your own risk.
-- Try check your email inbox for adidas account creation emails to make sure the accounts are actually being created
 - If you choose 100 accounts, be prepared to solve 100 captchas. If you exit the script before all accounts have been created they will NOT be saved
