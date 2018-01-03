@@ -33,3 +33,4 @@ Python account generator for adidas.com. Uses gmail "." trick to make 2^(n-1) ac
 
 ## Notes
 - If you choose 100 accounts, be prepared to solve 100 captchas. If you exit the script before all accounts have been created they will NOT be saved
+- Credit to Ryan9918 for the original script.
